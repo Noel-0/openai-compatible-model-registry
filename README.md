@@ -54,3 +54,6 @@ Start the service, then request the enabled model list with a reader token:
 curl -H 'Authorization: Bearer reader-token' http://localhost:8080/v1/models
 ```
 The example uses the demo token from `src/main/resources/application.properties`; do not reuse it in production.
+
+
+A successful response returns a JSON object whose `data` array contains only enabled models.
