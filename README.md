@@ -48,3 +48,9 @@ Requires JDK 21 and Maven.
     mvn test          # 22 tests
     mvn quarkus:dev
     curl -H 'Authorization: Bearer reader-token' localhost:8080/v1/models
+## Quick start
+Start the service, then request the enabled model list with a reader token:
+```bash
+curl -H 'Authorization: Bearer reader-token' http://localhost:8080/v1/models
+```
+The example uses the demo token from `src/main/resources/application.properties`; do not reuse it in production.
