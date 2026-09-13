@@ -1,0 +1,3 @@
+# Build output and macOS metadata
+/target/
+.DS_Store
