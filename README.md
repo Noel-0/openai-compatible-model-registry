@@ -33,12 +33,13 @@ instead of matching the request path, so authorization follows routing.
 Decisions: [ADR 001](adr/001-model-registry-and-authentication.md) ·
 [ADR 002](adr/002-resource-bound-authorization.md)
 
-## The bug worth reading about
+## Security note
 
-> **Before publishing:** replace this with four sentences in your own words: the
-> leading-slash bypass you fixed first, the trailing-slash variant you found while
-> preparing this release, why a string patch wasn't enough, and the test that now
-> guards it.
+A probe of path spellings found that `GET /v1/models/`, with a trailing slash and no
+credentials, returned 200. The original filter matched the request path as a string, so a
+spelling it didn't recognize skipped authentication while JAX-RS still routed the request.
+The fix binds the filter to the resource instead, and `PathVariantsTest` checks every
+routed spelling, failing against the old filter. Details: [ADR 002](adr/002-resource-bound-authorization.md).
 
 ## Run
 
